@@ -58,13 +58,13 @@ export const Ranking = ({ id }: { id: string }) => {
     setPositions([
       ...data.positions.map((p) => ({
         ...p,
-        area: p.area ? p.area : "available",
+        area: p.area ?? "available",
       })),
     ]);
 
   useEffect(() => {
     init();
-  }, [data]);
+  }, [data, init]);
 
   const saveRanking = useCallback(() => {
     const currentRankingsJson = localStorage.getItem("data");
@@ -104,7 +104,7 @@ export const Ranking = ({ id }: { id: string }) => {
     const newData = [...currentRankings.filter((r) => r.id !== id)];
     localStorage.setItem("data", JSON.stringify(newData));
     router.push("/");
-  }, [id]);
+  }, [id, router]);
 
   const [isOpen, setIsOpen] = useState(false);
 

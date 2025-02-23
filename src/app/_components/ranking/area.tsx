@@ -1,6 +1,6 @@
 "use client";
 
-import { TPosition } from "../create-ranking/create-ranking";
+import type { TPosition } from "../create-ranking/create-ranking";
 import { Position } from "./position";
 
 export const Area = ({
@@ -19,18 +19,12 @@ export const Area = ({
   onPositionDrop: (id: string) => void;
 }) => {
   const getContrastingTextColor = (backgroundColor: string): string => {
-    // Usuwamy znak "#" jeśli jest obecny
     const hex = backgroundColor.replace("#", "");
-
-    // Parsujemy wartości R, G, B
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
 
-    // Obliczamy luminancję — stosowany wzór według WCAG
     const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-
-    // Jeśli jasność jest większa niż 128, wybierz czarną czcionkę, w przeciwnym razie białą
     return luminance > 128 ? "black" : "white";
   };
   return (

@@ -53,21 +53,22 @@ export const Position = ({
 
   const editedItemRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = async (event: MouseEvent) => {
-      if (
-        editedItemRef.current &&
-        !editedItemRef.current.contains(event.target as Node)
-      ) {
-        const img = imgValue ? await fileToBase64(imgValue) : undefined;
-        onChange({ id, name: value, img });
-        setIsEdited(false);
-      }
-    };
+  const handleClickOutside = async (event: MouseEvent) => {
+    if (
+      editedItemRef.current &&
+      !editedItemRef.current.contains(event.target as Node)
+    ) {
+      const img = imgValue ? await fileToBase64(imgValue) : undefined;
+      onChange({ id, name: value, img });
+      setIsEdited(false);
+    }
+  };
 
-    document.addEventListener("mousedown", (e) => handleClickOutside(e));
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
-      document.removeEventListener("mousedown", (e) => handleClickOutside(e));
+      document.removeEventListener("mousedown", (e) => handleClickOutside);
     };
   }, [value, imgValue, id, onChange]);
 
