@@ -1,6 +1,6 @@
 "use client";
 
-import { act, useState } from "react";
+import { useState } from "react";
 import { CreateRankingModal } from "./create-ranking-modal";
 import { CreateRankingBtn } from "./create-ranking-btn";
 
@@ -24,7 +24,6 @@ export type TArea = { id: string; name: string; color: string };
 
 export const CreateRanking = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
   const onToggle = () => setIsOpen((prev) => !prev);
 

@@ -4,6 +4,7 @@ import { ModalFirstStep } from "./step/modal-first-step";
 import { ModalSecondStep } from "./step/modal-second-step";
 import { ModalThirdStep } from "./step/modal-third-step";
 import {
+  TImg,
   type TArea,
   type TDispatchAction,
   type TPosition,
@@ -20,7 +21,10 @@ export const CreateRankingModal = ({
     positions: TPosition[];
     areas: TArea[];
   };
-  dispatch: (action: TDispatchAction, payload: any) => void;
+  dispatch: (
+    action: TDispatchAction,
+    payload: TPosition | string | TArea | TImg,
+  ) => void;
   onClose: () => void;
 }) => {
   const [step, setStep] = useState(1);
@@ -44,7 +48,7 @@ export const CreateRankingModal = ({
     const newData = [...previousData, dataToStore];
     localStorage.setItem("data", JSON.stringify(newData));
     return router.push(`/ranking/${dataToStore.id}`);
-  }, [data]);
+  }, [data, router]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
