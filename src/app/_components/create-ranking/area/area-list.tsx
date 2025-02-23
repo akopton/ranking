@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Area } from "./area";
-import { TArea } from "../create-ranking";
+import { type TArea } from "../create-ranking";
 
 export const AreaList = ({
   areas,

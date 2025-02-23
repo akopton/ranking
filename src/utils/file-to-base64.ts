@@ -1,4 +1,4 @@
-import { TImg } from "@/app/_components/create-ranking/create-ranking";
+import { type TImg } from "@/app/_components/create-ranking/create-ranking";
 
 export const fileToBase64 = async (file: File): Promise<TImg> => {
   const buffer = await file.arrayBuffer();

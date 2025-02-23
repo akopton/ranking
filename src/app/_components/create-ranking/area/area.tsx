@@ -46,7 +46,7 @@ export const Area = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [value, colorValue]);
+  }, [value, colorValue, id, onChange]);
 
   return (
     <li
@@ -67,19 +67,11 @@ export const Area = ({
             autoFocus
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            // onBlur={(e) => {
-            //   onChange({ id, name: e.target.value, color });
-            //   setIsEdited(false);
-            // }}
           />
           <input
             type="color"
             value={colorValue}
             onChange={(e) => setColorValue(e.target.value)}
-            // onBlur={(e) => {
-            //   onChange({ id, name, color: e.target.value });
-            //   setIsEdited(false);
-            // }}
           />
         </div>
       ) : (

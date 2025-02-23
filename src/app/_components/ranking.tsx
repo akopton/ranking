@@ -4,14 +4,15 @@ import { useCallback, useEffect, useState } from "react";
 import { Area } from "./ranking/area";
 import { useRouter } from "next/navigation";
 import { OpenRankingModal } from "./open-ranking/open-ranking-modal";
+import { TArea, TPosition } from "./create-ranking/create-ranking";
 
 export const Ranking = ({ id }: { id: string }) => {
   const router = useRouter();
   const [data, setData] = useState<{
     id: string;
     title: string;
-    positions: { id: string; name: string; img: any; area?: string }[];
-    areas: { id: string; name: string; color: string }[];
+    positions: TPosition[];
+    areas: TArea[];
   }>({ id: "", title: "", positions: [], areas: [] });
 
   const getData = () => {
@@ -21,8 +22,8 @@ export const Ranking = ({ id }: { id: string }) => {
     return JSON.parse(data) as {
       id: string;
       title: string;
-      positions: { id: string; name: string; img: any; area?: string }[];
-      areas: { id: string; name: string; color: string }[];
+      positions: TPosition[];
+      areas: TArea[];
     }[];
   };
 

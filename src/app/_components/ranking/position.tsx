@@ -1,6 +1,7 @@
 "use client";
 
 import { base64ToFile } from "@/utils/base64-to-file";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export const Position = ({
@@ -43,7 +44,7 @@ export const Position = ({
     >
       {name && name}
       {preview && (
-        <img
+        <Image
           src={preview}
           alt="Podgląd"
           style={{ maxWidth: "100px", height: "auto", zIndex: "0" }}

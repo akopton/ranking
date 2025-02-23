@@ -14,7 +14,12 @@ export type TDispatchAction =
   | "changeTitle";
 
 export type TImg = { name: string; mimeType: string; base64: string };
-export type TPosition = { id: string; name: string; img: TImg | undefined };
+export type TPosition = {
+  id: string;
+  name: string;
+  img: TImg | undefined;
+  area?: string;
+};
 export type TArea = { id: string; name: string; color: string };
 
 export const CreateRanking = () => {
@@ -71,22 +76,26 @@ export const CreateRanking = () => {
     setData((prev) => ({ ...prev, title: value }));
   };
 
-  const dispatch = (action: TDispatchAction, payload: any) => {
+  const dispatch = (
+    action: TDispatchAction,
+    payload: string | TImg | TPosition | TArea,
+  ) => {
     switch (action) {
       case "addPosition":
-        return addPosition(payload);
+        addPosition(payload as TPosition);
+        break;
       case "removePosition":
-        return removePosition(payload);
+        return removePosition(payload as string);
       case "changePosition":
-        return changePosition(payload);
+        return changePosition(payload as TPosition);
       case "addArea":
-        return addArea(payload);
+        return addArea(payload as TArea);
       case "changeArea":
-        return changeArea(payload);
+        return changeArea(payload as TArea);
       case "removeArea":
-        return removeArea(payload);
+        return removeArea(payload as string);
       case "changeTitle":
-        return changeTitle(payload);
+        return changeTitle(payload as string);
     }
   };
 

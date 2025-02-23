@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Position } from "./position";
-import { TPosition } from "../create-ranking";
+import { type TPosition } from "../create-ranking";
 
 export const PositionList = ({
   positions,

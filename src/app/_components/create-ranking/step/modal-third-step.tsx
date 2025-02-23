@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { PositionList } from "../position/position-list";
 import { FaCheck } from "react-icons/fa";
-import { TImg, TPosition } from "../create-ranking";
+import { type TPosition } from "../create-ranking";
 import { fileToBase64 } from "@/utils/file-to-base64";
 
 export const ModalThirdStep = ({
@@ -33,7 +33,7 @@ export const ModalThirdStep = ({
     dispatch("addPosition", { id, name, img: base64File });
     setName("");
     setImg(undefined);
-  }, [name, img]);
+  }, [name, img, dispatch]);
 
   const changePosition = (position: TPosition) => {
     dispatch("changePosition", position);

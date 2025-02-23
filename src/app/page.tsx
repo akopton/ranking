@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { api, HydrateClient } from "@/trpc/server";
+import { HydrateClient } from "@/trpc/server";
 import { CreateRanking } from "./_components/create-ranking/create-ranking";
 import { OpenRanking } from "./_components/open-ranking/open-ranking";
 

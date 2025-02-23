@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
-import { TImg, TPosition } from "../create-ranking";
+import { type TImg, type TPosition } from "../create-ranking";
 import { base64ToFile } from "@/utils/base64-to-file";
 import { fileToBase64 } from "@/utils/file-to-base64";
+import Image from "next/image";
 
 export const Position = ({
   id,
@@ -68,7 +69,7 @@ export const Position = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [value, imgValue]);
+  }, [value, imgValue, id, onChange]);
 
   return (
     <li
@@ -113,7 +114,8 @@ export const Position = ({
             {name}
           </p>
           {imgUrl && (
-            <img
+            <Image
+              alt=""
               src={imgUrl}
               style={{
                 display: "block",

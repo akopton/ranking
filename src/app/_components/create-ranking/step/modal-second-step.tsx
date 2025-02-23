@@ -1,9 +1,8 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { FiUpload } from "react-icons/fi";
 import { AreaList } from "../area/area-list";
-import { TArea } from "../create-ranking";
+import { type TArea } from "../create-ranking";
 
 export const ModalSecondStep = ({
   areas,
@@ -30,7 +29,7 @@ export const ModalSecondStep = ({
     dispatch("addArea", { id, name, color });
     setName("");
     setColor("#000000");
-  }, [name, color]);
+  }, [name, color, dispatch]);
 
   const changeArea = (area: TArea) => {
     dispatch("changeArea", area);

@@ -3,7 +3,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ModalFirstStep } from "./step/modal-first-step";
 import { ModalSecondStep } from "./step/modal-second-step";
 import { ModalThirdStep } from "./step/modal-third-step";
-import { TArea, TDispatchAction, TPosition } from "./create-ranking";
+import {
+  type TArea,
+  type TDispatchAction,
+  type TPosition,
+} from "./create-ranking";
 import { useRouter } from "next/navigation";
 
 export const CreateRankingModal = ({

@@ -15,7 +15,7 @@ export default async function RankingPage({
           background: "#3b3a3a",
         }}
       >
-        <Ranking id={id as string} />
+        <Ranking id={id} />
       </main>
     </HydrateClient>
   );
