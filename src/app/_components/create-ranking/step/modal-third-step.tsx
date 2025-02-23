@@ -67,7 +67,7 @@ export const ModalThirdStep = ({
         </button>
         <p className="block">Dodaj pozycje</p>
       </div>
-      <div className="flex w-full items-center justify-between gap-2">
+      <div className="flex w-full items-end justify-between gap-2">
         <div className="flex items-end justify-between gap-2">
           <label
             htmlFor="title"
