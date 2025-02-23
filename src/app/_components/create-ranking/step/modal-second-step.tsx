@@ -63,27 +63,29 @@ export const ModalSecondStep = ({
         </button>
         <p className="block">Dodaj sekcje</p>
       </div>
-      <div className="flex w-full items-end gap-2">
-        <label
-          htmlFor="title"
-          className="flex flex-col items-start justify-center"
-        >
-          Nazwa sekcji
+      <div className="flex w-full items-center justify-between gap-2">
+        <div className="flex items-end">
+          <label
+            htmlFor="title"
+            className="flex flex-col items-start justify-between gap-2"
+          >
+            Nazwa sekcji
+            <input
+              id="title"
+              name="title"
+              className="w-full rounded-xl border-2 bg-transparent bg-none px-4 py-2 outline-none"
+              type="text"
+              value={name}
+              onChange={handleChange}
+            />
+          </label>
           <input
-            id="title"
-            name="title"
-            className="w-full rounded-xl border-2 bg-transparent bg-none px-4 py-2 outline-none"
-            type="text"
-            value={name}
-            onChange={handleChange}
+            className="mb-2 cursor-pointer"
+            type="color"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
           />
-        </label>
-        <input
-          className="mb-2 cursor-pointer"
-          type="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
+        </div>
         <button
           className="rounded-xl border-2 bg-transparent bg-none px-4 py-2 text-lg outline-none"
           onClick={addArea}

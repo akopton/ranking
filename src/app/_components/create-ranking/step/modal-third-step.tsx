@@ -67,38 +67,40 @@ export const ModalThirdStep = ({
         </button>
         <p className="block">Dodaj pozycje</p>
       </div>
-      <div className="flex w-full items-end gap-2">
-        <label
-          htmlFor="title"
-          className="flex flex-col items-start justify-center"
-        >
-          Nazwa pozycji
-          <input
-            id="title"
-            name="title"
-            className="w-full rounded-xl border-2 bg-transparent bg-none px-4 py-2 outline-none"
-            type="text"
-            value={name}
-            onChange={handleChange}
-          />
-        </label>
-        <label
-          htmlFor="upload"
-          className="flex cursor-pointer items-center justify-center rounded-xl border-2 px-2 py-2"
-        >
-          {!img ? <FiUpload /> : <FaCheck color="green" />}
-          <input
-            type="file"
-            id="upload"
-            hidden
-            onChange={(e) => {
-              const file = e.target?.files?.[0];
+      <div className="flex w-full items-center justify-between gap-2">
+        <div className="flex items-end justify-between gap-2">
+          <label
+            htmlFor="title"
+            className="flex flex-col items-start justify-center"
+          >
+            Nazwa pozycji
+            <input
+              id="title"
+              name="title"
+              className="w-full rounded-xl border-2 bg-transparent bg-none px-4 py-2 outline-none"
+              type="text"
+              value={name}
+              onChange={handleChange}
+            />
+          </label>
+          <label
+            htmlFor="upload"
+            className="flex cursor-pointer items-center justify-center rounded-xl border-2 px-2 py-2"
+          >
+            {!img ? <FiUpload /> : <FaCheck color="green" />}
+            <input
+              type="file"
+              id="upload"
+              hidden
+              onChange={(e) => {
+                const file = e.target?.files?.[0];
 
-              e.target.value = "";
-              setImg(file);
-            }}
-          />
-        </label>
+                e.target.value = "";
+                setImg(file);
+              }}
+            />
+          </label>
+        </div>
         <button
           className="rounded-xl border-2 bg-transparent bg-none px-4 py-2 text-lg outline-none"
           onClick={addPosition}
