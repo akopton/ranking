@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Area } from "./ranking/area";
 import { useRouter } from "next/navigation";
 import { OpenRankingModal } from "./open-ranking/open-ranking-modal";
-import { TArea, TPosition } from "./create-ranking/create-ranking";
+import type { TArea, TPosition } from "./create-ranking/create-ranking";
 
 export const Ranking = ({ id }: { id: string }) => {
   const router = useRouter();
@@ -31,11 +31,9 @@ export const Ranking = ({ id }: { id: string }) => {
     const data = getData();
     const f = data.find((el) => el.id === id);
     if (f) setData(f);
-  }, []);
+  }, [id]);
 
-  const [positions, setPositions] = useState<
-    { id: string; name: string; img: any; area: string }[]
-  >([]);
+  const [positions, setPositions] = useState<TPosition[]>([]);
 
   const [hoveredArea, setHoveredArea] = useState<string | null>(null);
 
@@ -76,8 +74,8 @@ export const Ranking = ({ id }: { id: string }) => {
     const currentRankings = JSON.parse(currentRankingsJson) as {
       id: string;
       title: string;
-      positions: { id: string; name: string; img: any; area?: string }[];
-      areas: { id: string; name: string; color: string }[];
+      positions: TPosition[];
+      areas: TArea[];
     }[];
 
     const f = currentRankings.find((r) => r.id === id);
@@ -96,8 +94,8 @@ export const Ranking = ({ id }: { id: string }) => {
     const currentRankings = JSON.parse(currentRankingsJson) as {
       id: string;
       title: string;
-      positions: { id: string; name: string; img: any; area?: string }[];
-      areas: { id: string; name: string; color: string }[];
+      positions: TPosition[];
+      areas: TArea[];
     }[];
 
     const f = currentRankings.find((r) => r.id === id);

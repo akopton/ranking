@@ -3,6 +3,7 @@
 import { base64ToFile } from "@/utils/base64-to-file";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import type { TImg } from "../create-ranking/create-ranking";
 
 export const Position = ({
   id,
@@ -12,7 +13,7 @@ export const Position = ({
 }: {
   id: string;
   name: string;
-  img: { name: string; base64: string; mimeType: string };
+  img: TImg | undefined;
   onDrop: (id: string) => void;
 }) => {
   const [preview, setPreview] = useState<string | null>(null);

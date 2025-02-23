@@ -1,5 +1,6 @@
 "use client";
 
+import { TPosition } from "../create-ranking/create-ranking";
 import { Position } from "./position";
 
 export const Area = ({
@@ -13,11 +14,7 @@ export const Area = ({
   id: string;
   name: string;
   color: string;
-  positions: {
-    id: string;
-    name: string;
-    img: { name: string; base64: string; mimeType: string };
-  }[];
+  positions: TPosition[];
   onMouseOver: (id: string) => void;
   onPositionDrop: (id: string) => void;
 }) => {
