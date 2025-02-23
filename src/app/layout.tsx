@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
-        <ToastContainer closeOnClick autoClose={3000} />
+        <ToastContainer closeOnClick autoClose={3000} position="bottom-right" />
       </body>
     </html>
   );
