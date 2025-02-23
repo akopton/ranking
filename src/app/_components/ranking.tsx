@@ -5,6 +5,7 @@ import { Area } from "./ranking/area";
 import { useRouter } from "next/navigation";
 import { OpenRankingModal } from "./open-ranking/open-ranking-modal";
 import type { TArea, TPosition } from "./create-ranking/create-ranking";
+import { toast } from "react-toastify";
 
 export const Ranking = ({ id }: { id: string }) => {
   const router = useRouter();
@@ -66,7 +67,7 @@ export const Ranking = ({ id }: { id: string }) => {
     init();
   }, [data]);
 
-  const saveRanking = useCallback(() => {
+  const saveRanking = useCallback(async () => {
     const currentRankingsJson = localStorage.getItem("data");
 
     if (!currentRankingsJson) return;
@@ -83,7 +84,18 @@ export const Ranking = ({ id }: { id: string }) => {
 
     const ranking = { ...data, positions };
     const newData = [...currentRankings.filter((r) => r.id !== id), ranking];
-    localStorage.setItem("data", JSON.stringify(newData));
+
+    const promise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(localStorage.setItem("data", JSON.stringify(newData)));
+      }, 2000);
+    });
+
+    await toast.promise(promise, {
+      pending: "Zapisywanie rankingu...",
+      error: "Błąd przy zapisie rankingu.",
+      success: "Pomyślnie zapisano ranking!",
+    });
   }, [data, positions, id]);
 
   const deleteRanking = useCallback(() => {
