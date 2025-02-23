@@ -63,11 +63,11 @@ export const ModalSecondStep = ({
         </button>
         <p className="block">Dodaj sekcje</p>
       </div>
-      <div className="flex w-full items-center justify-between gap-2">
-        <div className="flex items-end gap-2">
+      <div className="flex w-full items-end justify-between gap-2">
+        <div className="flex items-end justify-between gap-2">
           <label
             htmlFor="title"
-            className="flex flex-col items-end justify-between gap-2"
+            className="flex flex-col items-start justify-center gap-2"
           >
             Nazwa sekcji
             <input
