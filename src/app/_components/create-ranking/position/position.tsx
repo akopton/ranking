@@ -68,7 +68,7 @@ export const Position = ({
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", (e) => handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [value, imgValue, id, onChange]);
 
