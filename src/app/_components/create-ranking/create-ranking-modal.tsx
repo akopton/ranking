@@ -3,12 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ModalFirstStep } from "./step/modal-first-step";
 import { ModalSecondStep } from "./step/modal-second-step";
 import { ModalThirdStep } from "./step/modal-third-step";
-import {
-  TImg,
-  type TArea,
-  type TDispatchAction,
-  type TPosition,
-} from "./create-ranking";
+import type { TImg, TArea, TDispatchAction, TPosition } from "./create-ranking";
 import { useRouter } from "next/navigation";
 
 export const CreateRankingModal = ({
@@ -44,7 +39,13 @@ export const CreateRankingModal = ({
       return router.push(`/ranking/${dataToStore.id}`);
     }
 
-    const previousData = JSON.parse(previousDataJson);
+    const previousData = JSON.parse(previousDataJson) as {
+      id: string;
+      title: string;
+      positions: TPosition;
+      areas: TArea[];
+    }[];
+
     const newData = [...previousData, dataToStore];
     localStorage.setItem("data", JSON.stringify(newData));
     return router.push(`/ranking/${dataToStore.id}`);
