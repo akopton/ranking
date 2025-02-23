@@ -54,17 +54,17 @@ export const Ranking = ({ id }: { id: string }) => {
   const reset = () =>
     setPositions([...data.positions.map((p) => ({ ...p, area: "available" }))]);
 
-  const init = () =>
-    setPositions([
-      ...data.positions.map((p) => ({
-        ...p,
-        area: p.area ?? "available",
-      })),
-    ]);
-
   useEffect(() => {
+    const init = () =>
+      setPositions([
+        ...data.positions.map((p) => ({
+          ...p,
+          area: p.area ?? "available",
+        })),
+      ]);
+
     init();
-  }, [data, init]);
+  }, [data]);
 
   const saveRanking = useCallback(() => {
     const currentRankingsJson = localStorage.getItem("data");

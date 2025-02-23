@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
@@ -53,30 +53,26 @@ export const Position = ({
 
   const editedItemRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = async (event: MouseEvent) => {
-    if (
-      editedItemRef.current &&
-      !editedItemRef.current.contains(event.target as Node)
-    ) {
-      const img = imgValue ? await fileToBase64(imgValue) : undefined;
-      onChange({ id, name: value, img });
-      setIsEdited(false);
-    }
-  };
+  const changePosition = useCallback(async () => {
+    const img = imgValue ? await fileToBase64(imgValue) : undefined;
+    onChange({ id, name: value, img });
+    setIsEdited(false);
+  }, [id, value, imgValue]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", (e) =>
-      handleClickOutside(e).then((res) => {
-        return res;
-      }),
-    );
+    const handleClickOutside = async (event: MouseEvent) => {
+      if (
+        editedItemRef.current &&
+        !editedItemRef.current.contains(event.target as Node)
+      ) {
+        changePosition();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", (e) =>
-        handleClickOutside(e).then((res) => {
-          return res;
-        }),
-      );
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [value, imgValue, id, onChange]);
 
