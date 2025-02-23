@@ -1,10 +1,11 @@
-import Link from "next/link";
-
 import { HydrateClient } from "@/trpc/server";
 import { Ranking } from "../../_components/ranking";
-import { SearchParams } from "next/dist/server/request/search-params";
 
-export default async function Home({ params }: { params: SearchParams }) {
+export default async function RankingPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   return (
     <HydrateClient>
