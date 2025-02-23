@@ -57,7 +57,7 @@ export const Position = ({
     const img = imgValue ? await fileToBase64(imgValue) : undefined;
     onChange({ id, name: value, img });
     setIsEdited(false);
-  }, [id, value, imgValue]);
+  }, [id, value, imgValue, onChange]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -66,8 +66,12 @@ export const Position = ({
         !editedItemRef.current.contains(event.target as Node)
       ) {
         changePosition()
-          .then(() => {})
-          .catch(() => {});
+          .then(() => {
+            console.log("resolved");
+          })
+          .catch(() => {
+            console.log("error");
+          });
       }
     };
 
@@ -76,7 +80,7 @@ export const Position = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [value, imgValue, id, onChange]);
+  }, [changePosition]);
 
   return (
     <li
