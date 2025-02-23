@@ -65,10 +65,18 @@ export const Position = ({
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", (e) =>
+      handleClickOutside(e).then((res) => {
+        return res;
+      }),
+    );
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", (e) =>
+        handleClickOutside(e).then((res) => {
+          return res;
+        }),
+      );
     };
   }, [value, imgValue, id, onChange]);
 
