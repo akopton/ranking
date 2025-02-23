@@ -60,12 +60,14 @@ export const Position = ({
   }, [id, value, imgValue]);
 
   useEffect(() => {
-    const handleClickOutside = async (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         editedItemRef.current &&
         !editedItemRef.current.contains(event.target as Node)
       ) {
-        changePosition();
+        changePosition()
+          .then(() => {})
+          .catch(() => {});
       }
     };
 
